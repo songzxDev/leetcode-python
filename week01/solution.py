@@ -32,7 +32,7 @@ class Solution(object):
         for k, num in enumerate(nums):
             if num > 0:
                 break
-            if k == 0 or nums[k] != nums[k - 1]:
+            if (k == 0 or nums[k] != nums[k - 1]) and k < len(nums) - 2:
                 left, right = k + 1, len(nums) - 1
                 while left < right:
                     sumnum = num + nums[left] + nums[right]
