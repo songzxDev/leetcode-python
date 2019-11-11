@@ -85,4 +85,40 @@ class Solution(object):
             else:
                 tmp[n] = i
         return []
+
+    # 示例 2:
+    #
+    # 输入:pattern = "abba", str = "dog cat cat fish"
+    # 输出: false
+    #
+    # 示例 3:
+    #
+    # 输入: pattern = "aaaa", str = "dog cat cat dog"
+    # 输出: false
+    #
+    # 示例 4:
+    #
+    # 输入: pattern = "abba", str = "dog dog dog dog"
+    # 输出: false
+    #
+    # 说明:
+    # 你可以假设 pattern 只包含小写字母， str 包含了由单个空格分隔的小写字母。
+    # Related Topics 哈希表
+    def wordPattern(self, pattern, ss):
+        """
+        题目：290.单词规律
+        标签：哈希表
+        :type pattern: str
+        :type ss: str
+        :rtype: bool
+        """
+        pndt, ssdt, sslst = {}, {}, ss.split(' ')
+        if len(pattern) != len(sslst):
+            return False
+        for idx, ch in enumerate(pattern):
+            if pndt.get(ch) != ssdt.get(sslst[idx]):
+                return False
+            pndt[ch], ssdt[sslst[idx]] = idx, idx
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
