@@ -8,6 +8,36 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
+
+    # 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+    #
+    # 示例 1:
+    #
+    # 输入: s = "anagram", t = "nagaram"
+    # 输出: true
+    #
+    #
+    # 示例 2:
+    #
+    # 输入: s = "rat", t = "car"
+    # 输出: false
+    #
+    # 说明:
+    # 你可以假设字符串只包含小写字母。
+    #
+    # 进阶:
+    # 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
+    # Related Topics 排序 哈希表
+    def isAnagram(self, s, t):
+        """
+        题目：242.有效的字母异位词
+        标签：排序 哈希表
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        return sorted(s) == sorted(t)
+
     # 给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
     # 注意：答案中不可以包含重复的三元组。
     #
