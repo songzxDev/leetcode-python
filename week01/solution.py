@@ -270,4 +270,31 @@ class Solution(object):
         while i <= n:
             tmp[i], i = tmp[i - 1] + tmp[i - 2], i + 1
         return tmp[n]
+
+    # 给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
+    # 示例：
+    #
+    # 输入: ["Hello", "Alaska", "Dad", "Peace"]
+    # 输出: ["Alaska", "Dad"]
+    # 注意：
+    #
+    # 你可以重复使用键盘上同一字符。
+    # 你可以假设输入的字符串将只包含字母。
+    # Related Topics 哈希表
+    def findWords(self, words):
+        """
+        题号：500.键盘行
+        标签：哈希表
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        set1 = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p"}
+        set2 = {"A", "S", "D", "F", "G", "H", "J", "K", "L", "a", "s", "d", "f", "g", "h", "j", "k", "l"}
+        set3 = {"Z", "X", "C", "V", "B", "N", "M", "z", "x", "c", "v", "b", "n", "m"}
+        res = []
+        for word in words:
+            wdset = set(word)
+            if wdset <= set1 or wdset <= set2 or wdset <= set3:
+                res.append(word)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
