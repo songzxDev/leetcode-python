@@ -320,6 +320,11 @@ class Solution(object):
     # 输出: true
     # Related Topics 栈 字符串
     def isValid(self, ss):
+        # 时间复杂度为：O(N^2)的写法，不停的替换成对的括号，直到不存在成对为止
+        def replace_brackets(replstr):
+            while '()' in replstr or '[]' in replstr or '{}' in replstr:
+                replstr = replstr.replace('()', '').replace('[]', '').replace('{}', '')
+            return replstr
         """
         题目：20.有效的括号
         标签：栈 字符串
@@ -337,4 +342,7 @@ class Solution(object):
             elif len(stack) == 0 or stack.pop() != s:
                 return False
         return len(stack) == 0
+
+
+
 # leetcode submit region end(Prohibit modification and deletion)
