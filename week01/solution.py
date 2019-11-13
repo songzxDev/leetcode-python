@@ -297,4 +297,44 @@ class Solution(object):
             if wdset <= set1 or wdset <= set2 or wdset <= set3:
                 res.append(word)
         return res
+
+    # 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+    # 有效字符串需满足：
+    # 左括号必须用相同类型的右括号闭合。
+    # 左括号必须以正确的顺序闭合。
+    # 注意空字符串可被认为是有效字符串。
+    # 示例 1:
+    # 输入: "()"
+    # 输出: true
+    # 示例 2:
+    # 输入: "()[]{}"
+    # 输出: true
+    # 示例 3:
+    # 输入: "(]"
+    # 输出: false
+    # 示例 4:
+    # 输入: "([)]"
+    # 输出: false
+    # 示例 5:
+    # 输入: "{[]}"
+    # 输出: true
+    # Related Topics 栈 字符串
+    def isValid(self, ss):
+        """
+        题目：20.有效的括号
+        标签：栈 字符串
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        for s in ss:
+            if s == '(':
+                stack.append(')')
+            elif s == '{':
+                stack.append('}')
+            elif s == '[':
+                stack.append(']')
+            elif len(stack) == 0 or stack.pop() != s:
+                return False
+        return len(stack) == 0
 # leetcode submit region end(Prohibit modification and deletion)
