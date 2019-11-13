@@ -381,4 +381,15 @@ class Solution(object):
                 return i
         return -1
 
+    def firstuniqchar(self, s):
+        """
+        题目：387.字符串的第一个唯一字符
+        标签：哈希表 字符串（风骚解法）
+        :type s: str
+        :rtype: int
+        """
+        letters = 'abcdefghijklmnopqrstuvwxyz'
+        idxs = [s.index(ltt) for ltt in letters if s.count(ltt) == 1]
+        return min(idxs) if len(idxs) > 0 else -1
+
 # leetcode submit region end(Prohibit modification and deletion)
