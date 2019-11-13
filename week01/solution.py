@@ -352,7 +352,7 @@ class Solution(object):
     # 返回 2.
     # 注意事项：您可以假定该字符串只包含小写字母。
     # Related Topics 哈希表 字符串
-    def firstUniqChar(self, s):
+    def firstUniqCharSlow(self, s):
         """
         题目：387.字符串中的第一个唯一字符
         标签：哈希表 字符串
@@ -364,6 +364,20 @@ class Solution(object):
             counts[ord(c) - 97] += 1
         for i in xrange(len(s)):
             if counts[ord(s[i])-97] == 1:
+                return i
+        return -1
+
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # python 正好和js、java相反，哈希表比数组遍历快
+        counts = {}
+        for c in s:
+            counts[c] = counts.get(c, 0) + 1
+        for i in xrange(len(s)):
+            if counts[s[i]] == 1:
                 return i
         return -1
 
