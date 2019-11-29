@@ -65,3 +65,19 @@ class Solution(object):
                 res[p], j = A[j] * A[j], j - 1
             p -= 1
         return res
+
+    def findDuplicate(self, nums):
+        """
+        题目：287.寻找重复数
+        标签：数组 双指针
+        :type nums: List[int]
+        :rtype: int
+        """
+        slow, fast = nums[0], nums[0]
+        slow, fast = nums[slow], nums[nums[fast]]
+        while slow != fast:
+            slow, fast = nums[slow], nums[nums[fast]]
+        slow = nums[0]
+        while slow != fast:
+            slow, fast = nums[slow], nums[fast]
+        return slow
