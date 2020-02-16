@@ -71,10 +71,7 @@ class Solution(object):
         slst = list(strs.strip())
         if len(slst) == 0:
             return 0
-        sign = -1 if slst[0] == '-' else 1
-        if slst[0] in ('+', '-'):
-            slst.pop(0)
-        ret, i = 0, 0
+        sign, ret, i = (-1 if slst[0] == '-' else 1), 0, (1 if slst[0] in ('+', '-') else 0)
         while i < len(slst) and slst[i].isdigit():
             ret, i = ret * 10 + ord(slst[i]) - ord('0'), i + 1
         return max(-0x80000000, min(ret * sign, 0x7fffffff))
