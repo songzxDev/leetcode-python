@@ -55,7 +55,6 @@ class Solution(object):
         while f >= 0:
             k = countlst[tmp[f] - small] - 1
             nums[k] = tmp[f]
-            countlst[tmp[f] - small] -= 1
-            f -= 1
+            countlst[tmp[f] - small], f = k, f - 1
         return nums
 # leetcode submit region end(Prohibit modification and deletion)
