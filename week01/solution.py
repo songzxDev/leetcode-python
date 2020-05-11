@@ -6,6 +6,12 @@
 # @Software: PyCharm
 
 
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
 
@@ -450,4 +456,25 @@ class Solution(object):
             start += 1
             end -= 1
         return True
+
+    # leetcode submit region end(Prohibit modification and deletion)
+    # leetcode submit region begin(Prohibit modification and deletion)
+    # Definition for singly-linked list.
+
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        if not l1:
+            return l2
+        elif not l2:
+            return l1
+        elif l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
 # leetcode submit region end(Prohibit modification and deletion)
