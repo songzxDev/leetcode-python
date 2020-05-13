@@ -43,7 +43,8 @@ class Solution(object):
         :rtype: List[int]
         """
         if nums and len(nums) > 1:
-            self.quicksort(nums, 0, len(nums) - 1)
+            # self.quicksort(nums, 0, len(nums) - 1)
+            self.countsort(nums)
         return nums
 
     def partition(self, nums, begin, end):
@@ -60,4 +61,20 @@ class Solution(object):
             pivot = self.partition(nums, begin, end)
             self.quicksort(nums, begin, pivot - 1)
             self.quicksort(nums, pivot + 1, end)
+
+    def countsort(self, nums):
+        minnum, maxnum = min(nums), max(nums)
+        sizz = maxnum - minnum + 1
+        mycount = [0] * sizz
+        for n in nums:
+            mycount[n - minnum] += 1
+        for m in range(1, sizz):
+            mycount[m] += mycount[m - 1]
+        copied, f = list(nums), len(nums) - 1
+        while f >= 0:
+            k = mycount[copied[f] - minnum] - 1
+            nums[k] = copied[f]
+            mycount[copied[f] - minnum] -= 1
+            f -= 1
+
 # leetcode submit region end(Prohibit modification and deletion)
