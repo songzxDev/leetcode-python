@@ -30,15 +30,16 @@ if __name__ == '__main__':
     root = nextarray[0]
 
 
-    def build_tree(tree):
+    def build_tree(tree, level):
         if not tree:
             return tree
+        tree['nodeLevel'] = level
         tree['children'] = [dt for dt in nextarray if dt['pId'] == tree['id']]
+        tree['isParent'] = level < 2 or len(tree['children']) > 0
         if tree['children']:
             for child in tree['children']:
-                build_tree(child)
+                build_tree(child, level + 1)
         return tree
 
-
-    build_tree(root)
-    print json.dumps(root, ensure_ascii=False)
+    build_tree(root, 0)
+    print json.dumps([root], ensure_ascii=False)
