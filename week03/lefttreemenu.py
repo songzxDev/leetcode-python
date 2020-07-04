@@ -23,7 +23,7 @@ if __name__ == '__main__':
         name, ipd = data.split('#')
         iid, pid = ipd.split('-')
         name = name.decode('utf-8')
-        nextarray.append({'id': iid, 'pId': pid, 'name': name,
+        nextarray.append({'id': iid, 'pId': pid, 'name': name, 'open': True,
                           'url': '#{}'.format(pinyin.get_pinyin(name, '')),
                           'target': '_self'
                           })
